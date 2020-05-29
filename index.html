@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="ug.js"></script>
+</head>
+
+<body>
+    <div id="a"></div>
+    <script type="text/tpl" id="tt">
+        var a = document.getElementById('a');
+        a.innerHTML = 'hello world';
+    </script>
+
+    <script>
+        var t = document.getElementById("tt").innerHTML;
+        var c = ug(t);
+        document.getElementById("a").innerText = c;
+    </script>
+</body>
+
+</html>
