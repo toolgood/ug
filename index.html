@@ -1,25 +1,66 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="ug.js"></script>
 </head>
-
 <body>
-    <div id="a"></div>
-    <script type="text/tpl" id="tt">
-        var a = document.getElementById('a');
-        a.innerHTML = 'hello world';
-    </script>
+    <div>
+        输入：
+        <textarea id="tt" style="width:90%" rows="10"></textarea>
+    </div>
+
+    <button type="button" onclick="doit()">压缩混淆</button>
+    <div>
+        输出：
+        <textarea id="a" style="width:90%" rows="5"></textarea>
+    </div>
+    <div>
+        <h1>禁用用户控制台js</h1>
+        <textarea  style="width:90%" rows="10">// It appears Netflix is following (Facebook's lead)[https://news.ycombinator.com/item?id=7222129].(function() {
+    try {
+        var $_console$$ = console;
+        Object.defineProperty(window, "console", {
+            get: function() {
+                if ($_console$$._commandLineAPI)
+                    throw "Sorry, for security reasons, the script console is deactivated on netflix.com";
+                return $_console$$            },
+            set: function($val$$) {
+                $_console$$ = $val$$            }
+        })
+    } catch ($ignore$$) {
+    }})();</textarea>
+    </div>
+    <div>
+        <h1>前端防止 JS 调试</h1>
+        <textarea  style="width:90%" rows="15">简单模式：
+setInterval(function() {
+    debugger
+}, 100);
+
+稍微复杂一点：
+function t() {
+    try {
+        var a = ["r", "e", "g", "g", "u", "b", "e", "d"].reverse().join("");
+        ! function e(n) {
+            (1 !== ("" + n / n).length || 0 === n) && function() {}
+            .constructor(a)(),
+            e(++n)
+        }(0)
+    } catch (a) {
+        setTimeout(t, 500)
+    }
+}</textarea>
+    </div>
 
     <script>
-        var t = document.getElementById("tt").innerHTML;
-        var c = ug(t);
-        document.getElementById("a").innerText = c;
+        function doit() {
+            var t = document.getElementById("tt").value;
+            var c = ug(t);
+            document.getElementById("a").value = c;
+        }
     </script>
 </body>
-
 </html>
