@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="ug.js"></script>
+    <script src="./aaencode.js"></script>
+	<script src="./aadecode.js"></script>
+	<script src="./jjencode.js"></script>
 </head>
 <body>
     <div>
@@ -12,7 +15,11 @@
         <textarea id="tt" style="width:90%" rows="10"></textarea>
     </div>
 
-    <button type="button" onclick="doit()">压缩混淆</button>
+    <button type="button" onclick="document.getElementById('a').value=ug(document.getElementById('tt').value)">压缩混淆</button>
+    <button type="button" onclick="document.getElementById('a').value=aaencode(document.getElementById('tt').value)">aaencode</button>
+    <button type="button" onclick="document.getElementById('a').value=aadecode(document.getElementById('tt').value)">aadecode</button>
+    <button type="button" onclick="document.getElementById('a').value=jjencode('_', document.getElementById('tt').value)">jjencode</button>
+    
     <div>
         输出：
         <textarea id="a" style="width:90%" rows="5"></textarea>
